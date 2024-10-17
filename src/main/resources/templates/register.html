@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Registrar Nuevo Usuario</h2>
+
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
+            </div>
+            <div class="mb-3">
+                <label for="direction" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="direction" th:field="*{direction}" required>
+            </div>
+            <div class="mb-3">
+                <label for="mail" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="mail" th:field="*{mail}" required>
+            </div>
+            <div class="mb-3">
+                <label for="tlf" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="tlf" th:field="*{tlf}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+
+        <!-- Formulario para filtrar usuarios por dirección -->
+        <h2 class="mt-5">Filtrar Usuarios por Dirección</h2>
+        <form action="/userListByDirection" method="get">
+            <div class="mb-3">
+                <label for="filterDirection" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="filterDirection" name="direction" required>
+            </div>
+            <button type="submit" class="btn btn-secondary">Filtrar</button>
+        </form>
+
+        <a href="/list" class="btn btn-secondary mt-3">Ver Lista de Usuarios</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
